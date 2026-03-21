@@ -14,7 +14,7 @@ Interactive map with click-to-convert. Share positions via link, text message, o
 docker compose up
 ```
 
-Opens at `http://localhost:8080`. That's it!
+Opens at `http://localhost:3947`. That's it!
 
 To rebuild after changes:
 

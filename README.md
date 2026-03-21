@@ -15,7 +15,7 @@ Interactive map with click-to-convert. Share positions via link, text message, o
 ## Install
 
 ```bash
-git clone https://github.com/arnoldandreasson/latlong_mellifica_se.git
+git clone https://github.com/Lerold/latlong_mellifica_se.git
 cd latlong_mellifica_se
 npm install
 ```

@@ -6,6 +6,6 @@ export default defineConfig({
     outDir: 'dist',
   },
   server: {
-    open: true,
+    open: false,
   },
 });

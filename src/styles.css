@@ -209,10 +209,11 @@ label {
   z-index: 0;
 }
 
-#map-section.card {
+#map.leaflet-container {
+  background: none;
+  outline: none;
   border: none;
   box-shadow: none;
-  padding: 0;
 }
 
 /* Share bar */

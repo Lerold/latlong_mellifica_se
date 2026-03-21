@@ -1,4 +1,4 @@
-# Swepos.tsvit.io
+# latlong.tsvit.io
 
 Swedish geographic coordinate converter. Converts positions between:
 
@@ -78,6 +78,6 @@ The original pre-2.0 static site is preserved under `latlong.mellifica.se/public
 
 ## License
 
-MIT — Arnold Andreasson, 2007-2019.
+MIT — Jonathan B.
 
 Geodetic formulas and parameters from [Lantmäteriet](https://www.lantmateriet.se/geodesi).

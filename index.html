@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Konvertera mellan SWEREF 99, RT 90, WGS 84, decimalgrader, grad/min och grad/min/sek. Svensk koordinatomvandlare med karta.">
-  <meta property="og:title" content="Swepos.tsvit.io — Koordinatomvandlare">
+  <meta property="og:title" content="latlong.tsvit.io — Koordinatomvandlare">
   <meta property="og:description" content="Konvertera positioner mellan SWEREF 99, RT 90 och WGS 84.">
   <meta property="og:type" content="website">
-  <title>Swepos.tsvit.io — Konvertering SWEREF99/RT90/WGS84</title>
+  <title>latlong.tsvit.io — Konvertering SWEREF99/RT90/WGS84</title>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.tile.openstreetmap.org https://server.arcgisonline.com https://*.tile.opentopomap.org data:; style-src 'self' 'unsafe-inline'; connect-src 'self';">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -17,8 +17,8 @@
   <div class="page-layout">
     <div class="controls-column">
       <header>
-        <img src="/logo.svg" alt="Swepos.tsvit.io" id="site-logo" width="48" height="48">
-        <h1>Swepos.tsvit.io</h1>
+        <img src="/logo.svg" alt="latlong.tsvit.io" id="site-logo" width="48" height="48">
+        <h1>latlong.tsvit.io</h1>
         <nav class="toolbar">
           <a href="https://pap.as/sweref/" target="_blank" rel="noopener" class="ext-link">tabellkonvertering</a>
           <button type="button" id="info_button" class="btn btn-sm">info</button>
@@ -128,14 +128,13 @@
 
         <footer>
           <p>&copy; OpenStreetMap-bidragsgivare</p>
-          <p>Arnold Andreasson, 2007-2019. info@mellifica.se</p>
+          <p>&copy; Jonathan B</p>
         </footer>
       </main>
     </div>
 
     <!-- Map -->
-    <section class="card map-column" id="map-section">
-      <h2>Karta</h2>
+    <section class="map-column" id="map-section">
       <div id="map"></div>
       <div id="share-bar">
         <button type="button" id="share-btn" class="btn btn-share" disabled>

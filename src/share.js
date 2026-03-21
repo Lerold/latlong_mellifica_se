@@ -22,7 +22,7 @@ async function sharePosition(url) {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: 'Position — Swepos.tsvit.io',
+        title: 'Position — latlong.tsvit.io',
         text: 'Se denna position på kartan:',
         url,
       });

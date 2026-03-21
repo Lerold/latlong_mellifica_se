@@ -52,8 +52,8 @@ function normalizeKey(projection) {
 
 export function mapInit(onMapClick) {
   map = L.map('map', {
-    center: [62.5, 15],
-    zoom: 4,
+    center: [63.0, 16.0],
+    zoom: 5,
     zoomControl: true,
   });
 

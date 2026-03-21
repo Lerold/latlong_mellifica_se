@@ -6,10 +6,14 @@ let marker = null;
 let rt90Zone = null;
 let sweref99Zone = null;
 
+import markerIcon from './images/marker-icon.png';
+import markerIcon2x from './images/marker-icon-2x.png';
+import markerShadow from './images/marker-shadow.png';
+
 const MARKER_ICON = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],

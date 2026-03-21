@@ -20,6 +20,7 @@ export function convertLatFromDD(value) {
   if ((result[1] === 'S' || result[1] === '-') || result[4] === 'S') {
     lat *= -1;
   }
+  if (Math.abs(lat) > 90) return null;
   return lat;
 }
 
@@ -37,6 +38,7 @@ export function convertLongFromDD(value) {
   if ((result[1] === 'W' || result[1] === '-') || result[4] === 'W') {
     lon *= -1;
   }
+  if (Math.abs(lon) > 180) return null;
   return lon;
 }
 
@@ -55,6 +57,7 @@ export function convertLatFromDM(value) {
   if ((result[1] === 'S' || result[1] === '-') || result[5] === 'S') {
     lat *= -1;
   }
+  if (Math.abs(lat) > 90) return null;
   return lat;
 }
 
@@ -73,6 +76,7 @@ export function convertLongFromDM(value) {
   if ((result[1] === 'W' || result[1] === '-') || result[5] === 'W') {
     lon *= -1;
   }
+  if (Math.abs(lon) > 180) return null;
   return lon;
 }
 
@@ -92,6 +96,7 @@ export function convertLatFromDMS(value) {
   if ((result[1] === 'S' || result[1] === '-') || result[6] === 'S') {
     lat *= -1;
   }
+  if (Math.abs(lat) > 90) return null;
   return lat;
 }
 
@@ -111,6 +116,7 @@ export function convertLongFromDMS(value) {
   if ((result[1] === 'W' || result[1] === '-') || result[6] === 'W') {
     lon *= -1;
   }
+  if (Math.abs(lon) > 180) return null;
   return lon;
 }
 

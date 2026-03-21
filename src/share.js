@@ -44,16 +44,7 @@ async function fallbackCopy(url) {
     await navigator.clipboard.writeText(url);
     showFeedback('Länk kopierad!');
   } catch {
-    // Final fallback for older browsers
-    const textarea = document.createElement('textarea');
-    textarea.value = url;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    showFeedback('Länk kopierad!');
+    showFeedback('Kunde inte kopiera länken');
   }
 }
 

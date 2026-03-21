@@ -138,10 +138,15 @@ function fromRt90() {
   } else {
     const x = parseFloat(el.xRt90.value.replace(',', '.'));
     const y = parseFloat(el.yRt90.value.replace(',', '.'));
-    swedishParams(el.projRt90.value);
-    const latLon = gridToGeodetic(x, y);
-    latitude = latLon[0];
-    longitude = latLon[1];
+    if (isNaN(x) || isNaN(y) || x < 6e6 || x > 8e6 || y < 1e6 || y > 2e6) {
+      latitude = null;
+      longitude = null;
+    } else {
+      swedishParams(el.projRt90.value);
+      const latLon = gridToGeodetic(x, y);
+      latitude = latLon[0];
+      longitude = latLon[1];
+    }
   }
   updateLatFields();
   updateLongFields();
@@ -158,10 +163,15 @@ function fromSweref99() {
   } else {
     const n = parseFloat(el.nSweref99.value.replace(',', '.'));
     const e = parseFloat(el.eSweref99.value.replace(',', '.'));
-    swedishParams(el.projSweref99.value);
-    const latLon = gridToGeodetic(n, e);
-    latitude = latLon[0];
-    longitude = latLon[1];
+    if (isNaN(n) || isNaN(e) || n < 6e6 || n > 8e6 || e < 1e5 || e > 1e6) {
+      latitude = null;
+      longitude = null;
+    } else {
+      swedishParams(el.projSweref99.value);
+      const latLon = gridToGeodetic(n, e);
+      latitude = latLon[0];
+      longitude = latLon[1];
+    }
   }
   updateLatFields();
   updateLongFields();

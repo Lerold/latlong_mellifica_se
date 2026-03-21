@@ -206,9 +206,13 @@ label {
 #map {
   height: 50vh;
   min-height: 280px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
   z-index: 0;
+}
+
+#map-section.card {
+  border: none;
+  box-shadow: none;
+  padding: 0;
 }
 
 /* Share bar */

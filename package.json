@@ -1,5 +1,5 @@
 {
-  "name": "latlong-mellifica-se",
+  "name": "swepos-tsvit-io",
   "version": "2.0.0",
   "description": "Swedish geographic coordinate converter (DD/DM/DMS, RT90, SWEREF 99)",
   "type": "module",

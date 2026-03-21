@@ -1,4 +1,4 @@
-# latlong.mellifica.se
+# Swepos.tsvit.io
 
 Swedish geographic coordinate converter. Converts positions between:
 
@@ -8,7 +8,21 @@ Swedish geographic coordinate converter. Converts positions between:
 
 Interactive map with click-to-convert. Share positions via link, text message, or email.
 
-## Prerequisites
+## Quick start with Docker
+
+```bash
+docker compose up
+```
+
+Opens at `http://localhost:8080`. That's it!
+
+To rebuild after changes:
+
+```bash
+docker compose up --build
+```
+
+## Prerequisites (without Docker)
 
 - [Node.js](https://nodejs.org/) 18 or later
 

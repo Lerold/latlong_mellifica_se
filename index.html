@@ -14,108 +14,127 @@
   <!-- Styles loaded via JS module (Vite handles CSS) -->
 </head>
 <body>
-  <header>
-    <img src="/logo.svg" alt="Swepos.tsvit.io" id="site-logo" width="48" height="48">
-    <h1>Swepos.tsvit.io</h1>
-    <nav class="toolbar">
-      <a href="https://pap.as/sweref/" target="_blank" rel="noopener" class="ext-link">tabellkonvertering</a>
-      <button type="button" id="info_button" class="btn btn-sm">info</button>
-    </nav>
-  </header>
+  <div class="page-layout">
+    <div class="controls-column">
+      <header>
+        <img src="/logo.svg" alt="Swepos.tsvit.io" id="site-logo" width="48" height="48">
+        <h1>Swepos.tsvit.io</h1>
+        <nav class="toolbar">
+          <a href="https://pap.as/sweref/" target="_blank" rel="noopener" class="ext-link">tabellkonvertering</a>
+          <button type="button" id="info_button" class="btn btn-sm">info</button>
+        </nav>
+      </header>
 
-  <main>
-    <!-- SWEREF 99 / WGS 84 -->
-    <section class="card" id="wgs84">
-      <h2>SWEREF 99 (~WGS 84)</h2>
-      <div class="coord-grid">
-        <div></div>
-        <div class="col-header">Latitud</div>
-        <div class="col-header">Longitud</div>
-        <div><label for="lat_dd">Grader:</label></div>
-        <div><input type="text" id="lat_dd" autocomplete="off"></div>
-        <div><input type="text" id="long_dd" autocomplete="off"></div>
-        <div><label for="lat_dm">Grad/min:</label></div>
-        <div><input type="text" id="lat_dm" autocomplete="off"></div>
-        <div><input type="text" id="long_dm" autocomplete="off"></div>
-        <div><label for="lat_dms">Grad/min/sek:</label></div>
-        <div><input type="text" id="lat_dms" autocomplete="off"></div>
-        <div><input type="text" id="long_dms" autocomplete="off"></div>
-      </div>
-      <div class="info-text" id="wgs84_info" hidden>
-        <p>Mata in latitud/longitud i något av fälten ovan. De flesta
-        format ska accepteras, exempelvis latitud: 58 52 30.0, longitud: 11 8
-        45.0 i fälten för Grad/min/sek. Övriga fält på sidan uppdateras
-        automatiskt.</p>
-        <p>SWEREF 99 och WGS 84 är två olika referenssystem men likheterna
-        är stora och avvikelsen mellan systemen ligger på decimeternivå.</p>
-      </div>
-    </section>
+      <main>
+        <!-- SWEREF 99 / WGS 84 -->
+        <section class="card" id="wgs84">
+          <h2>SWEREF 99 (~WGS 84)</h2>
+          <div class="coord-grid">
+            <div></div>
+            <div class="col-header">Latitud</div>
+            <div class="col-header">Longitud</div>
+            <div><label for="lat_dd">Grader:</label></div>
+            <div><input type="text" id="lat_dd" autocomplete="off"></div>
+            <div><input type="text" id="long_dd" autocomplete="off"></div>
+            <div><label for="lat_dm">Grad/min:</label></div>
+            <div><input type="text" id="lat_dm" autocomplete="off"></div>
+            <div><input type="text" id="long_dm" autocomplete="off"></div>
+            <div><label for="lat_dms">Grad/min/sek:</label></div>
+            <div><input type="text" id="lat_dms" autocomplete="off"></div>
+            <div><input type="text" id="long_dms" autocomplete="off"></div>
+          </div>
+          <div class="info-text" id="wgs84_info" hidden>
+            <p>Mata in latitud/longitud i något av fälten ovan. De flesta
+            format ska accepteras, exempelvis latitud: 58 52 30.0, longitud: 11 8
+            45.0 i fälten för Grad/min/sek. Övriga fält på sidan uppdateras
+            automatiskt.</p>
+            <p>SWEREF 99 och WGS 84 är två olika referenssystem men likheterna
+            är stora och avvikelsen mellan systemen ligger på decimeternivå.</p>
+          </div>
+        </section>
 
-    <!-- RT 90 -->
-    <section class="card" id="rt90">
-      <h2>RT 90</h2>
-      <div class="proj-row">
-        <label for="proj_rt90">Kartprojektion:</label>
-        <select id="proj_rt90">
-          <option value="rt90_7.5_gon_v">RT90 7.5 gon V 0:-15</option>
-          <option value="rt90_5.0_gon_v">RT90 5 gon V 0:-15</option>
-          <option value="rt90_2.5_gon_v" selected>RT90 2.5 gon V 0:-15 (Nationell)</option>
-          <option value="rt90_0.0_gon_v">RT90 0 gon V 0:-15</option>
-          <option value="rt90_2.5_gon_o">RT90 2.5 gon O 0:-15</option>
-          <option value="rt90_5.0_gon_o">RT90 5 gon O 0:-15</option>
-        </select>
-      </div>
-      <div class="xy-row">
-        <label for="x_rt90">X:</label>
-        <input type="text" id="x_rt90" autocomplete="off">
-        <label for="y_rt90">Y:</label>
-        <input type="text" id="y_rt90" autocomplete="off">
-      </div>
-      <div class="info-text" id="rt90_info" hidden>
-        <p>Välj projektion och mata in X och Y. Övriga fält på sidan
-        uppdateras automatiskt. Heltalsdelen av X och Y ska vara 7 siffror lång
-        och enheten är meter.</p>
-        <p>RT 90 och SWEREF 99 är två olika referenssystem. Transformationen
-        sker med Lantmäteriets direktprojektionssamband.</p>
-      </div>
-    </section>
+        <!-- RT 90 -->
+        <section class="card" id="rt90">
+          <h2>RT 90</h2>
+          <div class="proj-row">
+            <label for="proj_rt90">Kartprojektion:</label>
+            <select id="proj_rt90">
+              <option value="rt90_7.5_gon_v">RT90 7.5 gon V 0:-15</option>
+              <option value="rt90_5.0_gon_v">RT90 5 gon V 0:-15</option>
+              <option value="rt90_2.5_gon_v" selected>RT90 2.5 gon V 0:-15 (Nationell)</option>
+              <option value="rt90_0.0_gon_v">RT90 0 gon V 0:-15</option>
+              <option value="rt90_2.5_gon_o">RT90 2.5 gon O 0:-15</option>
+              <option value="rt90_5.0_gon_o">RT90 5 gon O 0:-15</option>
+            </select>
+          </div>
+          <div class="xy-row">
+            <label for="x_rt90">X:</label>
+            <input type="text" id="x_rt90" autocomplete="off">
+            <label for="y_rt90">Y:</label>
+            <input type="text" id="y_rt90" autocomplete="off">
+          </div>
+          <div class="info-text" id="rt90_info" hidden>
+            <p>Välj projektion och mata in X och Y. Övriga fält på sidan
+            uppdateras automatiskt. Heltalsdelen av X och Y ska vara 7 siffror lång
+            och enheten är meter.</p>
+            <p>RT 90 och SWEREF 99 är två olika referenssystem. Transformationen
+            sker med Lantmäteriets direktprojektionssamband.</p>
+          </div>
+        </section>
 
-    <!-- SWEREF 99 TM -->
-    <section class="card" id="sweref99">
-      <h2>SWEREF 99 TM, SWEREF 99 dd mm</h2>
-      <div class="proj-row">
-        <label for="proj_sweref99">Kartprojektion:</label>
-        <select id="proj_sweref99">
-          <option value="sweref_99_tm" selected>SWEREF 99 TM</option>
-          <option value="sweref_99_1200">SWEREF 99 12 00</option>
-          <option value="sweref_99_1330">SWEREF 99 13 30</option>
-          <option value="sweref_99_1500">SWEREF 99 15 00</option>
-          <option value="sweref_99_1630">SWEREF 99 16 30</option>
-          <option value="sweref_99_1800">SWEREF 99 18 00</option>
-          <option value="sweref_99_1415">SWEREF 99 14 15</option>
-          <option value="sweref_99_1545">SWEREF 99 15 45</option>
-          <option value="sweref_99_1715">SWEREF 99 17 15</option>
-          <option value="sweref_99_1845">SWEREF 99 18 45</option>
-          <option value="sweref_99_2015">SWEREF 99 20 15</option>
-          <option value="sweref_99_2145">SWEREF 99 21 45</option>
-          <option value="sweref_99_2315">SWEREF 99 23 15</option>
-        </select>
-      </div>
-      <div class="xy-row">
-        <label for="n_sweref99">N:</label>
-        <input type="text" id="n_sweref99" autocomplete="off">
-        <label for="e_sweref99">E:</label>
-        <input type="text" id="e_sweref99" autocomplete="off">
-      </div>
-      <div class="info-text" id="sweref99_info" hidden>
-        <p>Välj projektion och mata in N och E. Övriga fält på sidan
-        uppdateras automatiskt. Heltalsdelen av N ska vara 7 siffror lång och E
-        ska vara 6 siffror. Enheten är meter.</p>
-      </div>
-    </section>
+        <!-- SWEREF 99 TM -->
+        <section class="card" id="sweref99">
+          <h2>SWEREF 99 TM, SWEREF 99 dd mm</h2>
+          <div class="proj-row">
+            <label for="proj_sweref99">Kartprojektion:</label>
+            <select id="proj_sweref99">
+              <option value="sweref_99_tm" selected>SWEREF 99 TM</option>
+              <option value="sweref_99_1200">SWEREF 99 12 00</option>
+              <option value="sweref_99_1330">SWEREF 99 13 30</option>
+              <option value="sweref_99_1500">SWEREF 99 15 00</option>
+              <option value="sweref_99_1630">SWEREF 99 16 30</option>
+              <option value="sweref_99_1800">SWEREF 99 18 00</option>
+              <option value="sweref_99_1415">SWEREF 99 14 15</option>
+              <option value="sweref_99_1545">SWEREF 99 15 45</option>
+              <option value="sweref_99_1715">SWEREF 99 17 15</option>
+              <option value="sweref_99_1845">SWEREF 99 18 45</option>
+              <option value="sweref_99_2015">SWEREF 99 20 15</option>
+              <option value="sweref_99_2145">SWEREF 99 21 45</option>
+              <option value="sweref_99_2315">SWEREF 99 23 15</option>
+            </select>
+          </div>
+          <div class="xy-row">
+            <label for="n_sweref99">N:</label>
+            <input type="text" id="n_sweref99" autocomplete="off">
+            <label for="e_sweref99">E:</label>
+            <input type="text" id="e_sweref99" autocomplete="off">
+          </div>
+          <div class="info-text" id="sweref99_info" hidden>
+            <p>Välj projektion och mata in N och E. Övriga fält på sidan
+            uppdateras automatiskt. Heltalsdelen av N ska vara 7 siffror lång och E
+            ska vara 6 siffror. Enheten är meter.</p>
+          </div>
+        </section>
+
+        <!-- About -->
+        <div class="info-text" id="about_info" hidden>
+          <p><strong>Direktlänkar:</strong><br>
+          Det går att ha direktlänkar till en position. Använd knappen "Dela position"
+          ovanför kartan, eller kopiera webbadressen direkt från webbläsaren.</p>
+          <p>Alla formler och parametrar är hämtade från
+          Lantmäteriets webbsidor: <a href="https://www.lantmateriet.se/geodesi"
+            target="_blank" rel="noopener">lantmateriet.se/geodesi</a>.</p>
+        </div>
+
+        <footer>
+          <p>&copy; OpenStreetMap-bidragsgivare</p>
+          <p>Arnold Andreasson, 2007-2019. info@mellifica.se</p>
+        </footer>
+      </main>
+    </div>
 
     <!-- Map -->
-    <section class="card" id="map-section">
+    <section class="card map-column" id="map-section">
       <h2>Karta</h2>
       <div id="map"></div>
       <div id="share-bar">
@@ -130,22 +149,7 @@
         lat/long, RT 90 och SWEREF 99.</p>
       </div>
     </section>
-
-    <!-- About -->
-    <div class="info-text" id="about_info" hidden>
-      <p><strong>Direktlänkar:</strong><br>
-      Det går att ha direktlänkar till en position. Använd knappen "Dela position"
-      ovanför kartan, eller kopiera webbadressen direkt från webbläsaren.</p>
-      <p>Alla formler och parametrar är hämtade från
-      Lantmäteriets webbsidor: <a href="https://www.lantmateriet.se/geodesi"
-        target="_blank" rel="noopener">lantmateriet.se/geodesi</a>.</p>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; OpenStreetMap-bidragsgivare</p>
-    <p>Arnold Andreasson, 2007-2019. info@mellifica.se</p>
-  </footer>
+  </div>
 
   <script type="module" src="/src/main.js"></script>
 </body>

@@ -235,6 +235,18 @@ label {
   to { opacity: 1; }
 }
 
+/* External map links */
+.external-maps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.external-maps a {
+  text-decoration: none;
+}
+
 /* Info text sections */
 .info-text {
   margin-top: 0.75rem;

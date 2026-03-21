@@ -39,9 +39,7 @@ function init() {
   // Init map
   mapInit((lat, lon) => setLatLong(lat, lon));
 
-  // Show default zones
-  showRt90Zone(el.projRt90.value);
-  showSweref99Zone(el.projSweref99.value);
+  // Zone overlays are shown only when the user changes projection
 
   // Init share feature
   shareInit();
@@ -117,6 +115,7 @@ function setLatLong(lat, lon) {
   updateSweref99();
   updateUrl();
   updateShareState(hasPosition());
+  updateExternalLinks();
 }
 
 function updateGrids() {
@@ -125,6 +124,7 @@ function updateGrids() {
   showMapMarker(latitude, longitude);
   updateUrl();
   updateShareState(hasPosition());
+  updateExternalLinks();
 }
 
 function hasPosition() {
@@ -215,6 +215,26 @@ function updateSweref99() {
     el.nSweref99.value = '';
     el.eSweref99.value = '';
   }
+}
+
+// Update external map links
+function updateExternalLinks() {
+  const container = document.getElementById('external-maps');
+  if (!hasPosition()) {
+    container.hidden = true;
+    return;
+  }
+  container.hidden = false;
+  const lat = latitude.toFixed(6);
+  const lon = longitude.toFixed(6);
+  document.getElementById('link-gmaps-view').href =
+    `https://www.google.com/maps/@${lat},${lon},15z`;
+  document.getElementById('link-gmaps-nav').href =
+    `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+  document.getElementById('link-eniro').href =
+    `https://kartor.eniro.se/?c=${lat},${lon}&z=15`;
+  document.getElementById('link-minkarta').href =
+    `https://minkarta.lantmateriet.se/?e=${lon}&n=${lat}&z=12`;
 }
 
 // Update the browser URL for sharing/bookmarking

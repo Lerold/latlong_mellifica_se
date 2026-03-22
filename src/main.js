@@ -44,6 +44,9 @@ function init() {
   // Init share feature
   shareInit();
 
+  // Bind external map links
+  bindExternalLinks();
+
   // Bind events — WGS84
   el.latDD.addEventListener('keyup', () => {
     latitude = convertLatFromDD(el.latDD.value);
@@ -225,16 +228,25 @@ function updateExternalLinks() {
     return;
   }
   container.hidden = false;
-  const lat = latitude.toFixed(6);
-  const lon = longitude.toFixed(6);
-  document.getElementById('link-gmaps-view').href =
-    `https://www.google.com/maps/@${lat},${lon},15z`;
-  document.getElementById('link-gmaps-nav').href =
-    `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
-  document.getElementById('link-eniro').href =
-    `https://kartor.eniro.se/?c=${lat},${lon}&z=15`;
-  document.getElementById('link-minkarta').href =
-    `https://minkarta.lantmateriet.se/?e=${lon}&n=${lat}&z=12`;
+}
+
+function openExternal(url) {
+  window.open(url, '_blank', 'noopener');
+}
+
+function bindExternalLinks() {
+  document.getElementById('link-gmaps-view').addEventListener('click', () => {
+    openExternal(`https://www.google.com/maps/@${latitude.toFixed(6)},${longitude.toFixed(6)},15z`);
+  });
+  document.getElementById('link-gmaps-nav').addEventListener('click', () => {
+    openExternal(`https://www.google.com/maps/dir/?api=1&destination=${latitude.toFixed(6)},${longitude.toFixed(6)}`);
+  });
+  document.getElementById('link-eniro').addEventListener('click', () => {
+    openExternal(`https://kartor.eniro.se/?c=${latitude.toFixed(6)},${longitude.toFixed(6)}&z=15`);
+  });
+  document.getElementById('link-minkarta').addEventListener('click', () => {
+    openExternal(`https://minkarta.lantmateriet.se/?e=${longitude.toFixed(6)}&n=${latitude.toFixed(6)}&z=12`);
+  });
 }
 
 // Update the browser URL for sharing/bookmarking

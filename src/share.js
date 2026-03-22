@@ -22,7 +22,7 @@ async function sharePosition(url) {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: 'Position — latlong.tsvit.io',
+        title: `Position — ${import.meta.env.VITE_SITE_NAME}`,
         text: 'Se denna position på kartan:',
         url,
       });

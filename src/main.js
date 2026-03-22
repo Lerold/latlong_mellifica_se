@@ -12,6 +12,7 @@ import {
   convertLatToDMS, convertLongToDMS,
 } from './geodesy/lat-lon.js';
 import { shareInit, updateShareState } from './share.js';
+import { initI18n, t } from './i18n.js';
 
 // State
 let latitude = null;
@@ -106,6 +107,9 @@ function init() {
 
   // Info toggle
   el.infoButton.addEventListener('click', toggleInfo);
+
+  // Init language switcher
+  initI18n();
 
   // Parse URL parameters
   parseUrlArguments();
@@ -300,12 +304,12 @@ function updateUrl() {
 // Info toggle
 function toggleInfo() {
   const ids = ['wgs84_info', 'rt90_info', 'sweref99_info', 'map_info', 'about_info'];
-  const showing = el.infoButton.textContent === 'info';
+  const showing = el.infoButton.textContent === t('info');
   ids.forEach((id) => {
     const elem = document.getElementById(id);
     if (elem) elem.hidden = !showing;
   });
-  el.infoButton.textContent = showing ? 'dölj info' : 'info';
+  el.infoButton.textContent = showing ? t('hideInfo') : t('info');
 }
 
 // Parse URL parameters (?latlong=, ?rt90=, ?sweref99tm=)

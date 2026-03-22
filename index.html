@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Konvertera mellan SWEREF 99, RT 90, WGS 84, decimalgrader, grad/min och grad/min/sek. Svensk koordinatomvandlare med karta.">
-  <meta property="og:title" content="latlong.tsvit.io — Koordinatomvandlare">
+  <meta property="og:title" content="%VITE_SITE_NAME% — Koordinatomvandlare">
   <meta property="og:description" content="Konvertera positioner mellan SWEREF 99, RT 90 och WGS 84.">
   <meta property="og:type" content="website">
-  <title>latlong.tsvit.io — Konvertering SWEREF99/RT90/WGS84</title>
+  <title>%VITE_SITE_NAME% — Konvertering SWEREF99/RT90/WGS84</title>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://*.tile.openstreetmap.org https://server.arcgisonline.com https://*.tile.opentopomap.org data:; style-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self';">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -17,11 +17,15 @@
   <div class="page-layout">
     <div class="controls-column">
       <header>
-        <img src="/logo.svg" alt="latlong.tsvit.io" id="site-logo" width="48" height="48">
-        <h1>latlong.tsvit.io</h1>
+        <img src="/logo.svg" alt="%VITE_SITE_NAME%" id="site-logo" width="48" height="48">
+        <h1>%VITE_SITE_NAME%</h1>
         <nav class="toolbar">
-          <a href="https://pap.as/sweref/" target="_blank" rel="noopener" class="ext-link">tabellkonvertering</a>
-          <button type="button" id="info_button" class="btn btn-sm">info</button>
+          <div class="lang-switcher">
+            <button type="button" id="lang-sv" class="lang-btn" title="Svenska">&#x1F1F8;&#x1F1EA;</button>
+            <button type="button" id="lang-en" class="lang-btn" title="English">&#x1F1EC;&#x1F1E7;</button>
+          </div>
+          <a href="https://pap.as/sweref/" target="_blank" rel="noopener" class="ext-link" data-i18n="tableConversion">tabellkonvertering</a>
+          <button type="button" id="info_button" class="btn btn-sm" data-i18n="info">info</button>
         </nav>
       </header>
 
@@ -31,29 +35,25 @@
           <h2>SWEREF 99 (~WGS 84)</h2>
           <div class="coord-grid">
             <div></div>
-            <div class="col-header">Latitud</div>
-            <div class="col-header">Longitud</div>
+            <div class="col-header" data-i18n="latitude">Latitud</div>
+            <div class="col-header" data-i18n="longitude">Longitud</div>
             <div></div>
-            <div><label for="lat_dd">Grader:</label></div>
+            <div><label for="lat_dd" data-i18n="degrees">Grader:</label></div>
             <div><input type="text" id="lat_dd" autocomplete="off"></div>
             <div><input type="text" id="long_dd" autocomplete="off"></div>
-            <div><button type="button" class="btn-copy" data-copy="dd" title="Kopiera">&#x2398;</button></div>
-            <div><label for="lat_dm">Grad/min:</label></div>
+            <div><button type="button" class="btn-copy" data-copy="dd" data-i18n-title="copy">&#x2398;</button></div>
+            <div><label for="lat_dm" data-i18n="degMin">Grad/min:</label></div>
             <div><input type="text" id="lat_dm" autocomplete="off"></div>
             <div><input type="text" id="long_dm" autocomplete="off"></div>
-            <div><button type="button" class="btn-copy" data-copy="dm" title="Kopiera">&#x2398;</button></div>
-            <div><label for="lat_dms">Grad/min/sek:</label></div>
+            <div><button type="button" class="btn-copy" data-copy="dm" data-i18n-title="copy">&#x2398;</button></div>
+            <div><label for="lat_dms" data-i18n="degMinSec">Grad/min/sek:</label></div>
             <div><input type="text" id="lat_dms" autocomplete="off"></div>
             <div><input type="text" id="long_dms" autocomplete="off"></div>
-            <div><button type="button" class="btn-copy" data-copy="dms" title="Kopiera">&#x2398;</button></div>
+            <div><button type="button" class="btn-copy" data-copy="dms" data-i18n-title="copy">&#x2398;</button></div>
           </div>
           <div class="info-text" id="wgs84_info" hidden>
-            <p>Mata in latitud/longitud i något av fälten ovan. De flesta
-            format ska accepteras, exempelvis latitud: 58 52 30.0, longitud: 11 8
-            45.0 i fälten för Grad/min/sek. Övriga fält på sidan uppdateras
-            automatiskt.</p>
-            <p>SWEREF 99 och WGS 84 är två olika referenssystem men likheterna
-            är stora och avvikelsen mellan systemen ligger på decimeternivå.</p>
+            <p data-i18n="wgs84Info1">Mata in latitud/longitud i något av fälten ovan. De flesta format ska accepteras, exempelvis latitud: 58 52 30.0, longitud: 11 8 45.0 i fälten för Grad/min/sek. Övriga fält på sidan uppdateras automatiskt.</p>
+            <p data-i18n="wgs84Info2">SWEREF 99 och WGS 84 är två olika referenssystem men likheterna är stora och avvikelsen mellan systemen ligger på decimeternivå.</p>
           </div>
         </section>
 
@@ -61,7 +61,7 @@
         <section class="card" id="rt90">
           <h2>RT 90</h2>
           <div class="proj-row">
-            <label for="proj_rt90">Kartprojektion:</label>
+            <label for="proj_rt90" data-i18n="projection">Kartprojektion:</label>
             <select id="proj_rt90">
               <option value="rt90_7.5_gon_v">RT90 7.5 gon V 0:-15</option>
               <option value="rt90_5.0_gon_v">RT90 5 gon V 0:-15</option>
@@ -76,14 +76,11 @@
             <input type="text" id="x_rt90" autocomplete="off">
             <label for="y_rt90">Y:</label>
             <input type="text" id="y_rt90" autocomplete="off">
-            <button type="button" class="btn-copy" data-copy="rt90" title="Kopiera">&#x2398;</button>
+            <button type="button" class="btn-copy" data-copy="rt90" data-i18n-title="copy">&#x2398;</button>
           </div>
           <div class="info-text" id="rt90_info" hidden>
-            <p>Välj projektion och mata in X och Y. Övriga fält på sidan
-            uppdateras automatiskt. Heltalsdelen av X och Y ska vara 7 siffror lång
-            och enheten är meter.</p>
-            <p>RT 90 och SWEREF 99 är två olika referenssystem. Transformationen
-            sker med Lantmäteriets direktprojektionssamband.</p>
+            <p data-i18n="rt90Info1">Välj projektion och mata in X och Y. Övriga fält på sidan uppdateras automatiskt. Heltalsdelen av X och Y ska vara 7 siffror lång och enheten är meter.</p>
+            <p data-i18n="rt90Info2">RT 90 och SWEREF 99 är två olika referenssystem. Transformationen sker med Lantmäteriets direktprojektionssamband.</p>
           </div>
         </section>
 
@@ -91,7 +88,7 @@
         <section class="card" id="sweref99">
           <h2>SWEREF 99 TM, SWEREF 99 dd mm</h2>
           <div class="proj-row">
-            <label for="proj_sweref99">Kartprojektion:</label>
+            <label for="proj_sweref99" data-i18n="projection">Kartprojektion:</label>
             <select id="proj_sweref99">
               <option value="sweref_99_tm" selected>SWEREF 99 TM</option>
               <option value="sweref_99_1200">SWEREF 99 12 00</option>
@@ -113,28 +110,24 @@
             <input type="text" id="n_sweref99" autocomplete="off">
             <label for="e_sweref99">E:</label>
             <input type="text" id="e_sweref99" autocomplete="off">
-            <button type="button" class="btn-copy" data-copy="sweref99" title="Kopiera">&#x2398;</button>
+            <button type="button" class="btn-copy" data-copy="sweref99" data-i18n-title="copy">&#x2398;</button>
           </div>
           <div class="info-text" id="sweref99_info" hidden>
-            <p>Välj projektion och mata in N och E. Övriga fält på sidan
-            uppdateras automatiskt. Heltalsdelen av N ska vara 7 siffror lång och E
-            ska vara 6 siffror. Enheten är meter.</p>
+            <p data-i18n="sweref99Info">Välj projektion och mata in N och E. Övriga fält på sidan uppdateras automatiskt. Heltalsdelen av N ska vara 7 siffror lång och E ska vara 6 siffror. Enheten är meter.</p>
           </div>
         </section>
 
         <!-- About -->
         <div class="info-text" id="about_info" hidden>
-          <p><strong>Direktlänkar:</strong><br>
-          Det går att ha direktlänkar till en position. Använd knappen "Dela position"
-          ovanför kartan, eller kopiera webbadressen direkt från webbläsaren.</p>
-          <p>Alla formler och parametrar är hämtade från
-          Lantmäteriets webbsidor: <a href="https://www.lantmateriet.se/geodesi"
+          <p><strong data-i18n="aboutLinks">Direktlänkar:</strong><br>
+          <span data-i18n="aboutLinksText">Det går att ha direktlänkar till en position. Använd knappen "Dela position" ovanför kartan, eller kopiera webbadressen direkt från webbläsaren.</span></p>
+          <p><span data-i18n="aboutFormulas">Alla formler och parametrar är hämtade från Lantmäteriets webbsidor:</span> <a href="https://www.lantmateriet.se/geodesi"
             target="_blank" rel="noopener">lantmateriet.se/geodesi</a>.</p>
         </div>
 
         <footer>
-          <p>&copy; OpenStreetMap-bidragsgivare</p>
-          <p>&copy; Jonathan B</p>
+          <p>&copy; <span data-i18n="copyrightOsm">OpenStreetMap-bidragsgivare</span></p>
+          <p>&copy; %VITE_COPYRIGHT%</p>
         </footer>
       </main>
     </div>
@@ -145,19 +138,18 @@
       <div id="share-bar">
         <button type="button" id="share-btn" class="btn btn-share" disabled>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          Dela position
+          <span data-i18n="sharePosition">Dela position</span>
         </button>
         <span id="share-feedback" class="share-feedback" hidden></span>
       </div>
       <div id="external-maps" class="external-maps" hidden>
         <button type="button" id="link-gmaps-view" class="btn btn-sm">Google Maps</button>
         <button type="button" id="link-gmaps-nav" class="btn btn-sm">Google Navigation</button>
-        <button type="button" id="link-eniro" class="btn btn-sm">Eniro Kartor</button>
+        <button type="button" id="link-eniro" class="btn btn-sm" data-i18n="eniroMaps">Eniro Kartor</button>
         <button type="button" id="link-minkarta" class="btn btn-sm">Min Karta</button>
       </div>
       <div class="info-text" id="map_info" hidden>
-        <p>Klicka/tryck på kartan för att se en positions koordinater uttryckt i
-        lat/long, RT 90 och SWEREF 99.</p>
+        <p data-i18n="mapInfo">Klicka/tryck på kartan för att se en positions koordinater uttryckt i lat/long, RT 90 och SWEREF 99.</p>
       </div>
     </section>
   </div>

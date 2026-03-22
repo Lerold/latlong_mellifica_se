@@ -33,15 +33,19 @@
             <div></div>
             <div class="col-header">Latitud</div>
             <div class="col-header">Longitud</div>
+            <div></div>
             <div><label for="lat_dd">Grader:</label></div>
             <div><input type="text" id="lat_dd" autocomplete="off"></div>
             <div><input type="text" id="long_dd" autocomplete="off"></div>
+            <div><button type="button" class="btn-copy" data-copy="dd" title="Kopiera">&#x2398;</button></div>
             <div><label for="lat_dm">Grad/min:</label></div>
             <div><input type="text" id="lat_dm" autocomplete="off"></div>
             <div><input type="text" id="long_dm" autocomplete="off"></div>
+            <div><button type="button" class="btn-copy" data-copy="dm" title="Kopiera">&#x2398;</button></div>
             <div><label for="lat_dms">Grad/min/sek:</label></div>
             <div><input type="text" id="lat_dms" autocomplete="off"></div>
             <div><input type="text" id="long_dms" autocomplete="off"></div>
+            <div><button type="button" class="btn-copy" data-copy="dms" title="Kopiera">&#x2398;</button></div>
           </div>
           <div class="info-text" id="wgs84_info" hidden>
             <p>Mata in latitud/longitud i något av fälten ovan. De flesta
@@ -72,6 +76,7 @@
             <input type="text" id="x_rt90" autocomplete="off">
             <label for="y_rt90">Y:</label>
             <input type="text" id="y_rt90" autocomplete="off">
+            <button type="button" class="btn-copy" data-copy="rt90" title="Kopiera">&#x2398;</button>
           </div>
           <div class="info-text" id="rt90_info" hidden>
             <p>Välj projektion och mata in X och Y. Övriga fält på sidan
@@ -108,6 +113,7 @@
             <input type="text" id="n_sweref99" autocomplete="off">
             <label for="e_sweref99">E:</label>
             <input type="text" id="e_sweref99" autocomplete="off">
+            <button type="button" class="btn-copy" data-copy="sweref99" title="Kopiera">&#x2398;</button>
           </div>
           <div class="info-text" id="sweref99_info" hidden>
             <p>Välj projektion och mata in N och E. Övriga fält på sidan

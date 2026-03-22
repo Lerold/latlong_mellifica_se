@@ -47,6 +47,9 @@ function init() {
   // Bind external map links
   bindExternalLinks();
 
+  // Bind copy buttons
+  bindCopyButtons();
+
   // Bind events — WGS84
   el.latDD.addEventListener('keyup', () => {
     latitude = convertLatFromDD(el.latDD.value);
@@ -234,18 +237,55 @@ function openExternal(url) {
   window.open(url, '_blank', 'noopener');
 }
 
+function getSweref99TmCoords() {
+  const currentProj = el.projSweref99.value;
+  swedishParams('sweref_99_tm');
+  const ne = geodeticToGrid(latitude, longitude);
+  swedishParams(currentProj);
+  return { n: Math.round(ne[0]), e: Math.round(ne[1]) };
+}
+
 function bindExternalLinks() {
   document.getElementById('link-gmaps-view').addEventListener('click', () => {
-    openExternal(`https://www.google.com/maps/@${latitude.toFixed(6)},${longitude.toFixed(6)},15z`);
+    if (!hasPosition()) return;
+    openExternal(`https://www.google.com/maps?q=${latitude.toFixed(6)},${longitude.toFixed(6)}`);
   });
   document.getElementById('link-gmaps-nav').addEventListener('click', () => {
+    if (!hasPosition()) return;
     openExternal(`https://www.google.com/maps/dir/?api=1&destination=${latitude.toFixed(6)},${longitude.toFixed(6)}`);
   });
   document.getElementById('link-eniro').addEventListener('click', () => {
-    openExternal(`https://kartor.eniro.se/?c=${latitude.toFixed(6)},${longitude.toFixed(6)}&z=15`);
+    if (!hasPosition()) return;
+    openExternal(`https://www.eniro.se/kartor?c=${latitude.toFixed(6)},${longitude.toFixed(6)}&z=13`);
   });
   document.getElementById('link-minkarta').addEventListener('click', () => {
-    openExternal(`https://minkarta.lantmateriet.se/?e=${longitude.toFixed(6)}&n=${latitude.toFixed(6)}&z=12`);
+    if (!hasPosition()) return;
+    const tm = getSweref99TmCoords();
+    openExternal(`https://minkarta.lantmateriet.se/plats/3006/v2.0/?e=${tm.e}&n=${tm.n}&z=6&mapprofile=karta&layers=%5B%5B%223%22%5D%2C%5B%221%22%5D%5D`);
+  });
+}
+
+function bindCopyButtons() {
+  document.querySelectorAll('.btn-copy').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.copy;
+      let text = '';
+      if (type === 'dd') {
+        text = `${el.latDD.value}, ${el.longDD.value}`;
+      } else if (type === 'dm') {
+        text = `${el.latDM.value}, ${el.longDM.value}`;
+      } else if (type === 'dms') {
+        text = `${el.latDMS.value}, ${el.longDMS.value}`;
+      } else if (type === 'rt90') {
+        text = `X: ${el.xRt90.value}, Y: ${el.yRt90.value}`;
+      } else if (type === 'sweref99') {
+        text = `N: ${el.nSweref99.value}, E: ${el.eSweref99.value}`;
+      }
+      if (!text || text.includes(', ') && text.split(', ').every(p => !p || p === 'X: ' || p === 'Y: ' || p === 'N: ' || p === 'E: ')) return;
+      navigator.clipboard.writeText(text);
+      btn.textContent = '\u2713';
+      setTimeout(() => { btn.innerHTML = '&#x2398;'; }, 1500);
+    });
   });
 }
 
